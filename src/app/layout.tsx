@@ -8,16 +8,14 @@ import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// For local testing; on Vercel it's still fine because the image is relative
+// Same pattern as your working example
 const APP_URL = "http://localhost:3000";
 
 export const metadata: Metadata = {
-    // 🟢 Keep it simple, like your working example
     title: "Consultancy Services",
     description:
         "Career guidance, education planning, and business strategy services designed to bring clarity and confidence to your next steps.",
     metadataBase: new URL(APP_URL),
-
     openGraph: {
         title: "Consultancy Services",
         description:
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
         siteName: "Consultancy Services",
         images: [
             {
-                url: "/og-image.png", // relative -> works locally + on Vercel
+                url: "/og-image.png",
                 width: 1200,
                 height: 630,
                 alt: "Consultancy Services Preview",
@@ -34,12 +32,10 @@ export const metadata: Metadata = {
         ],
         type: "website",
     },
-
     twitter: {
         card: "summary_large_image",
         images: ["/og-image.png"],
     },
-
     icons: {
         icon: "/favicon.ico",
     },
