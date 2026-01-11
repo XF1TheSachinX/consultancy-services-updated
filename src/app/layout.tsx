@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// If your project already uses a font like Inter, keep that:
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://YOUR-VERCEL-URL.vercel.app"; // <-- update this
+const siteUrl =
+    "https://consultancy-services-updated-154pgqwph-xf11thesachinxs-projects.vercel.app"; // your URL
 
 export const metadata: Metadata = {
     title: {
@@ -14,45 +18,7 @@ export const metadata: Metadata = {
     },
     description:
         "Modern consultancy services for career, education, and business growth. Built with Next.js, Tailwind CSS and optimized for SEO.",
-    keywords: [
-        "consultancy",
-        "career guidance",
-        "education consultancy",
-        "business consulting",
-        "Next.js",
-        "SEO",
-    ],
     metadataBase: new URL(siteUrl),
-    alternates: {
-        canonical: siteUrl,
-    },
-    openGraph: {
-        title: "Consultancy Services",
-        description:
-            "Get expert guidance for your career, education and business. Modern consultancy website built with Next.js.",
-        url: siteUrl,
-        siteName: "Consultancy Services",
-        images: [
-            {
-                url: "/og-image.png", // create later or change
-                width: 1200,
-                height: 630,
-                alt: "Consultancy Services",
-            },
-        ],
-        locale: "en_US",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Consultancy Services",
-        description:
-            "Modern consultancy services for career, education, and business growth.",
-        images: ["/og-image.png"],
-    },
-    icons: {
-        icon: "/favicon.ico",
-    },
 };
 
 export default function RootLayout({
@@ -61,8 +27,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+        <body className={inter.className}>
+        <ThemeProvider>
+            {/* Theme-aware wrapper */}
+            <div className="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-50 min-h-screen transition-colors duration-300">
+                <Header />
+                <div className="pt-20 min-h-[calc(100vh-80px)]">{children}</div>
+                <Footer />
+                <WhatsAppButton />
+            </div>
+        </ThemeProvider>
+        </body>
         </html>
     );
 }

@@ -1,10 +1,21 @@
 @import "tailwindcss";
 
+/* Tell Tailwind: "dark:" variant is active when .dark is on html/body/etc */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Default (light) theme variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* When .dark class is present (from next-themes), use dark values */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* Expose them to Tailwind's design tokens (optional, but nice) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,13 +23,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base body styles, driven by CSS variables above */
 body {
   background: var(--background);
   color: var(--foreground);
