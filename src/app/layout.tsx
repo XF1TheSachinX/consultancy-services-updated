@@ -8,8 +8,11 @@ import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// your exact Vercel URL (no trailing slash)
 const siteUrl =
     "https://consultancy-services-updated-qm7pekjre-xf1thesachinxs-projects.vercel.app";
+
+const ogImageUrl = `${siteUrl}/og-image.png`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
@@ -30,8 +33,7 @@ export const metadata: Metadata = {
         siteName: "Consultancy Services",
         images: [
             {
-                // 👇 this file exists and is served correctly
-                url: "/og-image.png",
+                url: ogImageUrl,          // ABSOLUTE URL
                 width: 1200,
                 height: 630,
                 alt: "Consultancy Services Preview",
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
         title: "Consultancy Services",
         description:
             "Career guidance, education planning and business strategy.",
-        images: ["/og-image.png"],
+        images: [ogImageUrl],         // ABSOLUTE URL
     },
 
     icons: {
