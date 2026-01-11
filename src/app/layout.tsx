@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const siteUrl =
-    "https://consultancy-services-updated-154pgqwph-xf11thesachinxs-projects.vercel.app"; // your URL
+    "https://consultancy-services-updated-ebht8ng4m-xf11thesachinxs-projects.vercel.app";
 
 export const metadata: Metadata = {
+    metadataBase: new URL(siteUrl),
+
     title: {
         default: "Consultancy Services",
         template: "%s | Consultancy Services",
     },
+
     description:
-        "Modern consultancy services for career, education, and business growth. Built with Next.js, Tailwind CSS and optimized for SEO.",
-    metadataBase: new URL(siteUrl),
+        "Career guidance, education planning, and business strategy services designed to bring clarity and confidence to your next steps.",
+
+    openGraph: {
+        title: "Consultancy Services",
+        description:
+            "Modern consultancy for career, education and business clarity.",
+        url: siteUrl,
+        siteName: "Consultancy Services",
+        images: [
+            {
+                url: "/og-image.png", // place your image inside /public
+                width: 1200,
+                height: 630,
+                alt: "Consultancy Services Preview Image",
+            },
+        ],
+        type: "website",
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "Consultancy Services",
+        description:
+            "Career guidance, education planning and business strategy.",
+        images: ["/og-image.png"],
+    },
+
+    icons: {
+        icon: "/favicon.ico",
+    },
 };
 
 export default function RootLayout({
@@ -28,16 +59,18 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
-        <ThemeProvider>
-            {/* Theme-aware wrapper */}
-            <div className="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-50 min-h-screen transition-colors duration-300">
-                <Header />
-                <div className="pt-20 min-h-[calc(100vh-80px)]">{children}</div>
-                <Footer />
-                <WhatsAppButton />
+        {/* Dark mode provider */}
+        <body className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-50 transition-colors`}>
+        <ThemeProviderWrapper>
+            <Header />
+
+            {/* Main content */}
+            <div className="pt-20 min-h-[calc(100vh-80px)]">
+                {children}
             </div>
-        </ThemeProvider>
+
+            <Footer />
+        </ThemeProviderWrapper>
         </body>
         </html>
     );
