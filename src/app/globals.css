@@ -39,3 +39,145 @@ body {
     background-position: 200% 0;
   }
 }
+
+/* Add to your globals.css */
+
+/* Smooth scrolling and transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Carousel-specific animations */
+.carousel-slide-enter {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.carousel-slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 400ms, transform 400ms ease-out;
+}
+
+.carousel-slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-slide-exit-active {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 400ms, transform 400ms ease-out;
+}
+
+/* Instagram-style shadow utilities */
+.shadow-instagram {
+  box-shadow:
+          0 0 0 3px #FF6B8B,
+          0 0 0 6px #9C4ED6,
+          0 0 0 9px #4F8AFF;
+}
+
+.dark .shadow-instagram {
+  box-shadow:
+          0 0 0 3px #FF6B8B,
+          0 0 0 6px #9C4ED6,
+          0 0 0 9px #4F8AFF;
+}
+
+/* Gradient text animation */
+.animate-gradient {
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Pulse animation for indicators */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Prevent image drag */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Better focus styles for accessibility */
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Add to your globals.css */
+
+/* Better image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Avatar specific styles */
+.avatar-image {
+  transition: transform 0.3s ease;
+}
+
+.avatar-container:hover .avatar-image {
+  transform: scale(1.05);
+}
+
+/* Material-like shadows */
+.shadow-material {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08), 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dark .shadow-material {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth carousel transitions */
+.carousel-enter {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.carousel-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-exit-active {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Crisp border for avatars */
+.avatar-border {
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .avatar-border {
+  border: 3px solid #1e293b;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}

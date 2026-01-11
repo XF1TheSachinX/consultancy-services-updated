@@ -45,10 +45,10 @@ export default function Hero() {
 
                             <div className="flex flex-wrap gap-3">
                                 <Link
-                                    href="/contact"
+                                    href="/register"  // Changed from "/contact" to "/register"
                                     className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-white text-blue-700 font-semibold shadow-md hover:shadow-lg hover:-translate-y-[1px] transition"
                                 >
-                                    Book a Free Call
+                                    Register for Free Session
                                 </Link>
                                 <Link
                                     href="/services"
@@ -76,13 +76,19 @@ export default function Hero() {
                                     A focused 45-minute call to map your options and next steps.
                                 </p>
                                 <div className="flex justify-between text-xs text-blue-100/90">
-                  <span>
-                    Slots this week: <strong>3</strong>
-                  </span>
                                     <span>
-                    Mode: <strong>Online</strong>
-                  </span>
+                                        Slots this week: <strong>3</strong>
+                                    </span>
+                                    <span>
+                                        Mode: <strong>Online</strong>
+                                    </span>
                                 </div>
+                                <Link
+                                    href="/register"
+                                    className="mt-4 inline-block w-full text-center py-2 text-sm font-medium rounded-lg bg-white/20 hover:bg-white/30 transition"
+                                >
+                                    Book Your Slot Now
+                                </Link>
                             </div>
                         </motion.div>
                     </div>
