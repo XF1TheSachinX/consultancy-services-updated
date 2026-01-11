@@ -1,3 +1,4 @@
+// src/components/ThemeProviderWrapper.tsx
 "use client";
 
 import { ThemeProvider } from "next-themes";
@@ -8,11 +9,7 @@ export default function ThemeProviderWrapper({
     children: React.ReactNode;
 }) {
     return (
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-        >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             {children}
         </ThemeProvider>
     );

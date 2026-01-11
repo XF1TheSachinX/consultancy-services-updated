@@ -9,7 +9,7 @@ import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 const siteUrl =
-    "https://consultancy-services-updated-ebht8ng4m-xf11thesachinxs-projects.vercel.app";
+    "https://consultancy-services-updated-qm7pekjre-xf1thesachinxs-projects.vercel.app";
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
@@ -30,10 +30,11 @@ export const metadata: Metadata = {
         siteName: "Consultancy Services",
         images: [
             {
-                url: "/og-image.png", // place your image inside /public
+                // 👇 this file exists and is served correctly
+                url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "Consultancy Services Preview Image",
+                alt: "Consultancy Services Preview",
             },
         ],
         type: "website",
@@ -59,16 +60,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-        {/* Dark mode provider */}
-        <body className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-50 transition-colors`}>
+        <body
+            className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-50 transition-colors`}
+        >
         <ThemeProviderWrapper>
             <Header />
-
-            {/* Main content */}
-            <div className="pt-20 min-h-[calc(100vh-80px)]">
-                {children}
-            </div>
-
+            <div className="pt-20 min-h-[calc(100vh-80px)]">{children}</div>
             <Footer />
         </ThemeProviderWrapper>
         </body>
