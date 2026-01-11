@@ -8,19 +8,14 @@ import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// FIX 1: Get the actual Vercel URL dynamically
-const APP_URL = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-
-// FIX 2: Make sure og-image.png exists in public folder
-// Run: ls public/ to check if og-image.png exists
+// Your consistent production URL
+const APP_URL = "https://consultancy-sachin.vercel.app";
 
 export const metadata: Metadata = {
     title: "Consultancy Services",
     description:
         "Career guidance, education planning, and business strategy services designed to bring clarity and confidence to your next steps.",
-    metadataBase: new URL(APP_URL), // This is correct
+    metadataBase: new URL(APP_URL),
     openGraph: {
         title: "Consultancy Services",
         description:
@@ -29,29 +24,27 @@ export const metadata: Metadata = {
         siteName: "Consultancy Services",
         images: [
             {
-                // FIX 3: Make sure this image exists
-                url: "/og-image.png", // This is correct - metadataBase handles it
+                url: "/og-image.png", // This will resolve to https://consultancy-sachin.vercel.app/og-image.png
                 width: 1200,
                 height: 630,
                 alt: "Consultancy Services Preview",
             },
         ],
         type: "website",
-        // FIX 4: Add locale (optional but good practice)
         locale: "en_US",
     },
     twitter: {
         card: "summary_large_image",
-        // FIX 5: Use same image path
+        title: "Consultancy Services",
+        description: "Modern consultancy for career, education and business clarity.",
         images: ["/og-image.png"],
     },
-    // REMOVE OR KEEP icons? Let's keep it simple like working code
     icons: {
         icon: "/favicon.ico",
+        apple: "/apple-touch-icon.png", // Optional but recommended
     },
 };
 
-/*
 export default function RootLayout({
                                        children,
                                    }: {
@@ -67,20 +60,6 @@ export default function RootLayout({
             <div className="pt-20 min-h-[calc(100vh-80px)]">{children}</div>
             <Footer />
         </ThemeProviderWrapper>
-        </body>
-        </html>
-    );
-}*/
-
-// Test with minimal version (temporarily)
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <html lang="en">
-        <body>
-        <h1>Test OG Image</h1>
-        {/* Test if image loads */}
-        <img src="/og-image.png" alt="Test OG" style={{maxWidth: '300px'}} />
-        {children}
         </body>
         </html>
     );
