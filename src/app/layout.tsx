@@ -8,23 +8,15 @@ import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// your exact Vercel URL (no trailing slash)
-/*const siteUrl =
-    "https://consultancy-services-updated-qm7pekjre-xf1thesachinxs-projects.vercel.app";*/
-
+// For local testing; on Vercel it's still fine because the image is relative
 const APP_URL = "http://localhost:3000";
 
-
 export const metadata: Metadata = {
-    metadataBase: new URL(APP_URL),
-
-    title: {
-        default: "Consultancy Services",
-        template: "%s | Consultancy Services",
-    },
-
+    // 🟢 Keep it simple, like your working example
+    title: "Consultancy Services",
     description:
         "Career guidance, education planning, and business strategy services designed to bring clarity and confidence to your next steps.",
+    metadataBase: new URL(APP_URL),
 
     openGraph: {
         title: "Consultancy Services",
@@ -34,7 +26,7 @@ export const metadata: Metadata = {
         siteName: "Consultancy Services",
         images: [
             {
-                url: "/og-image.png",          // ABSOLUTE URL
+                url: "/og-image.png", // relative -> works locally + on Vercel
                 width: 1200,
                 height: 630,
                 alt: "Consultancy Services Preview",
@@ -45,10 +37,7 @@ export const metadata: Metadata = {
 
     twitter: {
         card: "summary_large_image",
-        title: "Consultancy Services",
-        description:
-            "Career guidance, education planning and business strategy.",
-        images: ["/og-image.png"],         // ABSOLUTE URL
+        images: ["/og-image.png"],
     },
 
     icons: {
